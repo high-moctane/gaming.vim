@@ -59,6 +59,7 @@ function! gaming#set_color_scheme(timer)
     exe 'hi NonText              guifg=' . s:colors[s:fg_idx]' guibg=' . s:colors[s:bg_idx]
     exe 'hi StatusLine           guifg=' . s:colors[s:fg_idx]' guibg=' . s:colors[s:bg_idx]
     exe 'hi StatusLineNC         guifg=' . s:colors[s:fg_idx]' guibg=' . s:colors[s:bg_idx]
+    exe 'hi CursorLineNr         guifg=' . s:colors[s:fg_idx]' guibg=' . s:colors[s:bg_idx]
 
     exe 'hi Error                guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi Todo                 guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
@@ -72,7 +73,6 @@ function! gaming#set_color_scheme(timer)
     exe 'hi FoldColumn           guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi IncSearch            guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi LineNr               guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
-    exe 'hi CursorLineNr         guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi MatchParen           guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi ModeMsg              guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi MoreMsg              guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
