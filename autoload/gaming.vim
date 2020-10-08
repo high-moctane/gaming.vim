@@ -1,21 +1,53 @@
-let s:colors = ['#DD0000',
-            \   '#BB8800',
-            \   '#999900',
-            \   '#88BB00',
-            \   '#00DD00',
-            \   '#00BB88',
-            \   '#009999',
-            \   '#0088BB',
-            \   '#0000DD',
-            \   '#8800BB',
-            \   '#990099',
-            \   '#BB0088',
-            \]
+let s:pi = 3.1416
 
-let s:fg_idx = 0
-let s:bg_idx = len(s:colors) / 2
+function! s:load_variables()
+    if !exists("g:gaming#period")
+        let g:gaming#period = 10000
+    endif
 
-hi clear
+    if !exists("g:gaming#resolution")
+        let g:gaming#resolution = 50
+    endif
+endfunction
+
+function! s:dec2strhex(num)
+    return printf("%02x", a:num)
+endfunction
+
+function! s:float2_255(num)
+    return float2nr(a:num * 255)
+endfunction
+
+function! s:rad2float(num)
+    return (sin(a:num) + 1.0) / 2.0
+endfunction
+
+function! s:mod_2pi(rad)
+    if a:rad >= s:pi
+        return a:rad - (2.0 * s:pi)
+    end
+    return a:rad
+endfunction
+
+function! s:init_colors()
+    let l:rad_r = 0.0
+    let l:rad_g = 2.0 * s:pi / 3.0
+    let l:rad_b = 2.0 * s:pi / (2.0 / 3.0)
+
+    let l:rad_delta = 2.0 * s:pi / (g:gaming#period / g:gaming#resolution)
+
+    for l:time in range(0, g:gaming#period, g:gaming#resolution)
+        let l:hex_r = s:dec2strhex(s:float2_255(s:rad2float(l:rad_r)))
+        let l:hex_g = s:dec2strhex(s:float2_255(s:rad2float(l:rad_g)))
+        let l:hex_b = s:dec2strhex(s:float2_255(s:rad2float(l:rad_b)))
+
+        call add(s:colors, '#' . l:hex_r . l:hex_g . l:hex_b)
+
+        let l:rad_r = s:mod_2pi(l:rad_r + l:rad_delta)
+        let l:rad_g = s:mod_2pi(l:rad_g + l:rad_delta)
+        let l:rad_b = s:mod_2pi(l:rad_b + l:rad_delta)
+    endfor
+endfunction
 
 function! gaming#set_color_scheme(timer)
     exe 'hi Normal               guifg=' . s:colors[s:fg_idx]' guibg=' . s:colors[s:bg_idx]
@@ -93,11 +125,18 @@ function! gaming#set_color_scheme(timer)
     exe 'hi WildMenu             guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi SignColumn           guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
 
-
     let s:fg_idx = (s:fg_idx + 1) % len(s:colors)
     let s:bg_idx = (s:bg_idx + 1) % len(s:colors)
 endfunction
 
 function! gaming#start()
-    call timer_start(50, 'gaming#set_color_scheme', {'repeat': -1})
+    call s:load_variables()
+    let s:colors = []
+    call s:init_colors()
+    let s:fg_idx = 0
+    let s:bg_idx = len(s:colors) / 2
+
+    hi clear
+
+    call timer_start(g:gaming#resolution, 'gaming#set_color_scheme', {'repeat': -1})
 endfunction

@@ -1,11 +1,12 @@
 # gaming.vim
 Gaming Vim color scheme
 
+![screenshot.gif](images/screenshot.gif)
 
 ## Requirements
 
 - Vim (not Neovim)
-- has('timer')
+- +timer
 - True Color
 
 ## Install
