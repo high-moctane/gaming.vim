@@ -19,7 +19,7 @@ colorscheme gaming
 
 ## Customization
 
-These parameters must be set before calling "colorscheme gaming".
+These parameters must be set before calling `colorscheme gaming`.
 
 ```vim
 " 500 milliseconds colors cycle
