@@ -91,7 +91,6 @@ function! gaming#set_color_scheme(timer)
     exe 'hi NonText              guifg=' . s:colors[s:fg_idx]' guibg=' . s:colors[s:bg_idx]
     exe 'hi StatusLine           guifg=' . s:colors[s:fg_idx]' guibg=' . s:colors[s:bg_idx]
     exe 'hi StatusLineNC         guifg=' . s:colors[s:fg_idx]' guibg=' . s:colors[s:bg_idx]
-    exe 'hi CursorLineNr         guifg=' . s:colors[s:fg_idx]' guibg=' . s:colors[s:bg_idx]
 
     exe 'hi Error                guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi Todo                 guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
@@ -99,6 +98,10 @@ function! gaming#set_color_scheme(timer)
     exe 'hi Color                guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi ColorColumn          guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi ColorLine            guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
+    exe 'hi Cursor               guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
+    exe 'hi CursorLine           guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
+    exe 'hi CursorLineNr         guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
+    exe 'hi CursorColumn         guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi ErrorMsg             guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi VertSplit            guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
     exe 'hi Folded               guifg=' . s:colors[s:bg_idx]' guibg=' . s:colors[s:fg_idx]
