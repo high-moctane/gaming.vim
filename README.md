@@ -1,5 +1,5 @@
 # gaming.vim
-Gaming Vim color scheme
+Gaming Vim color scheme.
 
 ![screenshot.gif](images/screenshot.gif)
 
@@ -7,12 +7,28 @@ Gaming Vim color scheme
 
 - Vim (not Neovim)
 - +timer
-- True Color
+- True color terminal or GVim
 
-## Install
+## Installing
 
 ```
 Plug 'high-moctane/gaming.vim'
 
 colorscheme gaming
 ```
+
+## Customization
+
+These parameters must be set before calling "colorscheme gaming".
+
+```vim
+" 500 milliseconds colors cycle
+let g:gaming#period = 500
+
+" Updating colors every 50 milliseconds
+let g:gaming#resolution = 50
+```
+
+## LICENSE
+
+MIT
