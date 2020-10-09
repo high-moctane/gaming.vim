@@ -26,7 +26,7 @@ These parameters must be set before calling "colorscheme gaming".
 let g:gaming#period = 500
 
 " Updating colors every 50 milliseconds
-let g:gaming#resolution = 50
+let g:gaming#update_time = 50
 ```
 
 ## LICENSE
