@@ -5,8 +5,8 @@ function! s:load_variables()
         let g:gaming#period = 10000
     endif
 
-    if !exists("g:gaming#resolution")
-        let g:gaming#resolution = 50
+    if !exists("g:gaming#update_time")
+        let g:gaming#update_time = 50
     endif
 endfunction
 
@@ -34,9 +34,9 @@ function! s:init_colors()
     let l:rad_g = 2.0 * s:pi / 3.0
     let l:rad_b = 2.0 * s:pi / (2.0 / 3.0)
 
-    let l:rad_delta = 2.0 * s:pi / (g:gaming#period / g:gaming#resolution)
+    let l:rad_delta = 2.0 * s:pi / (g:gaming#period / g:gaming#update_time)
 
-    for l:time in range(0, g:gaming#period, g:gaming#resolution)
+    for l:time in range(0, g:gaming#period, g:gaming#update_time)
         let l:hex_r = s:dec2strhex(s:float2_255(s:rad2float(l:rad_r)))
         let l:hex_g = s:dec2strhex(s:float2_255(s:rad2float(l:rad_g)))
         let l:hex_b = s:dec2strhex(s:float2_255(s:rad2float(l:rad_b)))
@@ -141,5 +141,5 @@ function! gaming#start()
 
     hi clear
 
-    call timer_start(g:gaming#resolution, 'gaming#set_color_scheme', {'repeat': -1})
+    call timer_start(g:gaming#update_time, 'gaming#set_color_scheme', {'repeat': -1})
 endfunction
